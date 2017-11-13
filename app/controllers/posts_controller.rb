@@ -22,7 +22,8 @@ class PostsController < ApplicationController
       .require(:post)
       .permit(
         :title,
-        :content)
+        :content,
+        :category_id)
       .merge(user_id: current_user.id)
   end
 end
