@@ -1,0 +1,31 @@
+- if @post
+  %h1
+    = @post.title
+  %cite
+    = "Dernière mise à jour #{@post.updated_at}"
+  %hr
+  %p.article.well
+    = @post.content
+  %cite
+    = "#{@post.user.name} - le #{@post.created_at}"
+  %hr
+  %h3
+    = "#{@post.comments.count} Commentaire#{'s' if @post.comments.count > 1}"
+  .container
+    - @post.comments.each do |comment|
+      .row
+        .col-sm-1.thumbnail
+          %img.img-responsive.user-photo{src: "https://ssl.gstatic.com/accounts/ui/avatar_2x.png"}
+        .col-sm-11
+          .panel.panel-default
+            .panel-heading
+              %strong
+                = comment.pseudo
+                %span.text-muted
+                  = "Posté le #{comment.created_at}"
+            .panel-body
+              = comment.content
+    = render partial: "form_comment"
+- else
+  .alert.alert-danger.text-center
+    Cet article n'existe pas !

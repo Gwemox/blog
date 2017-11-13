@@ -3,15 +3,14 @@
     %a.navbar-brand{href: "/"}
       Blogueur
     %ul.nav.navbar-nav
-      %li.active
-        %a{href: "#"}
-          Home
-      %li
-        %a{href: "#"}
-          Test
-      %li
-        %a{href: "#"}
-          Test2
-      %li
-        %a{href: "#"}
-          Test3
+      - Category.all.each do |category|
+        %li
+          %a{href: category_path(category.id)}
+            = category.name
+      - if current_user.is_admin?
+        %li
+          %a{href: "/admin"}
+            Administration
+          %li
+            %a{href: new_post_path}
+              Nouveau article

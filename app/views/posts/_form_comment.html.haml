@@ -1,0 +1,13 @@
+= form_for Comment.new, class: 'form', html: {multipart: true} do |f|
+  .form-group
+    = f.label :email, class: 'form-label required'
+    = f.email_field :email, class: 'form-control', value: "#{current_user.email if current_user}"
+  .form-group
+    = f.label :pseudo, class: 'form-label required'
+    = f.text_field :pseudo, class: 'form-control', value: "#{current_user.name if current_user}"
+  .form-group
+    = f.label :content, class: 'form-label required'
+    = f.text_field :content, class: 'form-control'
+  .form-group
+    = f.hidden_field :post_id, class: 'form-control', value: @post.id
+    = f.submit "Poster", class: 'btn btn-primary center-block'

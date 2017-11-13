@@ -1,0 +1,12 @@
+= form_for Post.new, class: 'form', html: {multipart: true} do |f|
+  .form-group
+    = f.label :title, class: 'form-label required'
+    = f.text_field :title, class: 'form-control'
+  .form-group
+    = f.label :content, class: 'form-label required'
+    = f.text_field :content, class: 'form-control'
+  .form-group
+    = f.label :category_id, class: 'form-label required'
+    = f.collection_select :category_id, Category.all, :id, :name, {}, {class: 'form-control'}
+  .form-group
+    = f.submit "Poster", class: 'btn btn-primary center-block'

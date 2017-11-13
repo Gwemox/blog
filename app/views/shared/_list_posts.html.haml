@@ -1,0 +1,13 @@
+.container
+  - if @posts.count > 0
+    - @posts.each do |post|
+      .row
+        %a{href: post_path(post.id)}
+          %h3
+            = post.title
+        %cite
+          = "Publié le #{post.created_at}"
+        %hr
+  - else
+    .alert.alert-info.text-center
+      Aucun article trouvé !

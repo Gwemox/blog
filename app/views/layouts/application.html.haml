@@ -2,7 +2,7 @@
 %html
   %head
     %meta{:content => "text/html; charset=UTF-8", "http-equiv" => "Content-Type"}/
-    %title Listings
+    %title Blogueur
     = csrf_meta_tags
     %script{:crossorigin => "anonymous", :integrity => "sha256-hwg4gsxgFZhOsEEamdOYGBf13FyQuiTwlAQgxVSNgt4=", :src => "https://code.jquery.com/jquery-3.2.1.min.js"}
     %link{:href => "https://fonts.googleapis.com/css?family=Dosis", :rel => "stylesheet"}
@@ -13,10 +13,6 @@
     .header
       = render partial: '/shared/header'
     .container.content
-      %p.notice
-        = notice
-      %p.alert
-        = alert
       = yield
 
       = render partial: '/shared/footer'
